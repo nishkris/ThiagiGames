@@ -1,0 +1,94 @@
+.btn-primary0 {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: black;
+  border-style: solid;
+ 
+  }
+
+
+.btn-primary1 {
+  color: #ffffff;
+  background-color: #428b00;
+  border-color: black;
+  border-style: solid;
+}
+
+.btn-primary2 {
+  color: #ffffff;
+  background-color: #FF0464;
+  border-color: black;
+  border-style: solid;
+}
+.btn-primary3 {
+  color: #ffffff;
+  background-color: #FFC104;
+  border-color: black;
+  border-style: solid;
+}
+
+button{
+	
+}
+
+.margin-2top {
+	margin-top: 10px;
+}
+
+.divLayout {
+	margin-top: 2%;
+	border-style: groove;	
+}
+
+.themeButton {
+	height : 25px;
+	width : 25px; 
+}
+
+.themeButtonColor0{
+   background-color: #428bca;	
+}
+
+.themeButtonColor1{
+  background-color: #428b00;	
+}
+
+.themeButtonColor2{
+  background-color: #FF0464;	
+}
+
+.themeButtonColor3{
+   background-color: #FFC104;
+}
+
+.contentStyle0{
+	margin-left:30%; 
+	margin-top: 2%;
+	margin-bottom: 2%
+}
+
+.container1 {
+	//width: 70%;
+	border: 10px solid #000;
+	height: 1.5em;
+	margin-left: 5%;
+	margin-top: 2%;
+	border-style: ridge;
+}
+
+.container2 {
+	width: 70%;
+	border: 10px solid #000;
+	height: 20%;
+	margin-left : 5%;
+	padding-top: 2%;
+	border-style: ridge;
+}
+
+.lableDivStyle{
+	border : 1px solid #000;
+	height :1em;
+	width : 3em;
+	display: inline-block;	
+	margin-left :.05em;
+}
