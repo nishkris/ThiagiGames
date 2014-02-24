@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="Crypto.css">
+<title>Cryptogram</title>
+<script type="text/javascript" src="Cryptogram.js"></script>
+</head>
+<body>
+	<div id="div_showCipher" class="container1"></div>
+	<div id="div_decipher" style="visibility: hidden" class="container2">
+		<label id="lb_ciphered"></label> <input type="text" id="tx_deciphered"
+			maxlength="1" 
+			onkeydown="if (event.keyCode == 13) func();" />
+	</div>
+	<div id="div_answerBoard" class="container1"></div>
+
+
+	<script type="text/javascript">
+		var codes = "'The quick brown fox jumps over the lazy dog!!"; 
+		dyCreateContainer('div_showCipher', 'div_answerBoard', codes);
+	</script>
+
+
+
+</body>
+</html>
