@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <title>Chunk Puzzle</title>
+    <script type="text/javascript" src="head.min.js"></script>
+    <script type="text/javascript" src="chunk.js"></script>
+    <link rel="stylesheet" type="text/css" href="myStyle.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div id="chunksPuzzle"></div>
+    <!--<div id="touchme4" class="touchBox"><span>adfsdfgsadg</span><b>Drag.</b></div>
+    <div id="drop" class="dropArea"><b>Drop here</b></div> -->
+<script>
+var solutionMap = new Object();
+var input = "1 2 3 4 5";
+createChunksPuzzle(input);
+
+head.js("https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js","ui.js","touch.js", function (){
+$(".btn-primary0").draggable({revert:false});
+$(".lableDivStyle").droppable({
+    drop: function( event, ui ) {
+        $(ui.draggable);
+        $(this).css({'background':'green'});
+              solutionMap[this.id] = document.getElementById(ui.draggable[0].id).innerHTML;
+              checkSolution();
+              soundEffect('hit02.wav', this.id);
+
+    },
+    over: function(event, ui) {
+        $(this).css({'background':'blue'});
+    },
+    out: function (event, ui){
+        $(this).css({'background':'red'});
+      solutionMap[this.id] = undefined;
+   }
+
+});
+});
+</script>
+</body>
+</html>
