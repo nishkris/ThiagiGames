@@ -225,7 +225,7 @@ function dechipher(index){
 function userCipher(message,key){
 	for(i=0;i<26;i++){
 		if(!((key[i]>=65 && key[i]<=90)||(key[i]>=97&&key[i]<=122)))
-			alert("Invalid key");
+			//alert("Invalid key");
 		cipher[i] = key[i];
 		
 	}
@@ -240,7 +240,7 @@ function userCipher(message,key){
 			}
 	}
 	if(unique==0)
-		//alert("not valid");
+		alert("not valid");
 }
 
 
