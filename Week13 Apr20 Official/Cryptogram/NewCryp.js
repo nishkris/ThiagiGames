@@ -14,13 +14,16 @@ function playSound(filePath) {
 	snd.play();
 }
 
-function timeElapsed(minutes, seconds, milliseconds) {
+function timeElapsed(weeks, days, hours, minutes, seconds, milliseconds) {
 	// three elements in interval, first is minutes, second is seconds, third is
 	// milliseconds
 	var interval = new Array();
-	interval[0] = minutes;
-	interval[1] = seconds;
-	interval[2] = milliseconds;
+	interval[0] = weeks;
+	interval[1] = days;
+	interval[2] = hours;
+	interval[3] = minutes;
+	interval[4] = seconds;
+	interval[5] = milliseconds; 
 	return interval;
 }
 
@@ -28,6 +31,9 @@ function calculateTime(gStartTime, gEndTime) {
 	var milliseconds = 0;
 	var seconds = 0;
 	var minutes = 0;
+	var hours = 0;
+	var days = 0;
+	var weeks = 0;
 	if (gStartTime == undefined) {
 		return timeElapsed(0, 0, 0);
 	}
@@ -47,14 +53,97 @@ function calculateTime(gStartTime, gEndTime) {
 		minutes = Math.floor(seconds / 60);
 		seconds = seconds % 60;
 	}
-	return timeElapsed(minutes, seconds, milliseconds);
+	
+	if (minutes >= 60){
+		hours = Math.floor(minutes/60);
+		minutes = minutes %60;
+	}
+	
+	if (hours >= 24){
+		days = Math.floor(hours/24);
+		hours = hours % 24;
+	}
+	if (days >= 7){
+		weeks = Math.floor(days/7);
+		days = days % 7;
+	}
+
+	var interval = new Array();
+	interval[0] = weeks;
+	interval[1] = days;
+	interval[2] = hours;
+	interval[3] = minutes;
+	interval[4] = seconds;
+	interval[5] = milliseconds; 
+	return interval;
 }
 
 function showTime(gStartTime, gEndTime, gameNo) {
 	var interval = calculateTime(gStartTime, gEndTime);
-	var timeStr = "time to pass game " + gameNo + ": ";
-	timeStr = timeStr + interval[0] + " minutes " + interval[1] + " seconds "
-	+ interval[2] + " milliseconds";
+	var timeStr = "Time taken:  ";
+	var weeksStr = "";
+	var daysStr = "";
+	var hoursStr = "";
+	var minutesStr = "";
+	var secondsStr = "";
+	var beforeFirst = true;
+	//for weeks info
+
+	if(interval[0]>1){
+		weeksStr = interval[0]+" weeks ";
+		beforeFirst = false;
+	}else if(interval[0]==1){
+		weeksStr = interval[0]+" week ";
+		beforeFirst = false;
+	}else if(interval[0]==0){
+		if(beforeFirst == false){
+			weeksStr = interval[0]+" week ";
+		}
+	}
+
+	//for days info
+	if(interval[1]>1){
+		daysStr = interval[1]+" days ";
+		beforeFirst = false;
+	}else if(interval[1]==1){
+		daysStr = interval[1]+" day ";
+		beforeFirst = false;
+	}else if(interval[1]==0){
+		if(beforeFirst == false){
+			daysStr = interval[1]+ " day ";
+		}
+	}
+	//for hours info
+	if(interval[2]>1){
+		hoursStr = interval[2]+" hours ";
+		beforeFirst = false;
+	}else if(interval[2]==1){
+		hoursStr = interval[2]+" hour ";
+		beforeFirst = false;
+	}else if(interval[2]==0){
+		if(beforeFirst == false){
+			hoursStr = interval[2]+" hour ";
+		}
+	}
+	//for minutes info
+	if(interval[3]>1){
+		minutesStr = interval[3]+" minutes ";
+		beforeFirst = false;
+	}else if(interval[3]==1){
+		minutesStr = interval[3]+" minute ";
+		beforeFirst = false;
+	}else if(interval[3]==0){
+		if(beforeFirst == false){
+			minutesStr = interval[3]+" minute ";
+		}
+	}
+	//for seconds info
+	if(interval[4]>1){
+		secondsStr = interval[4]+" seconds ";
+	}else{
+		secondsStr = interval[4]+" second ";
+	}
+	timeStr = timeStr + weeksStr +daysStr + hoursStr + minutesStr + secondsStr;
 	return timeStr;
 }
 
@@ -531,7 +620,7 @@ function replaceChar(lineNo, outerDiv) {
 		crData.endTime = new Date();
 		var timeInfo = showTime(crData.startTime.getTime(), crData.endTime
 				.getTime(), outerDiv);
-		alert("You got it right!!" + timeInfo + " \n");
+		alert("You got it right!!\n\n" + timeInfo + " \n");
 	}
 }
 function chkAnswer(outerDiv) {
@@ -686,4 +775,3 @@ function userCipher(div_id, messages, keys) {
 	crData.cipher = cipher;
 	return true;
 }
-
