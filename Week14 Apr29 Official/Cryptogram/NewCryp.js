@@ -604,6 +604,7 @@ function replaceChar(lineNo, outerDiv) {
 		map[outerDiv] = crData1;
 		inpBox.value = "";
 		document.getElementById(outerDiv+"_"+lineNo + "div_decipher").style.visibility = "hidden";
+		inpBox.blur();
 		playSound("media/char_changed.mp3");
 	} else {
 		inpBox.value = "";
